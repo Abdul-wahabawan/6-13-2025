@@ -1,0 +1,424 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weekly Spotlight - Our Echo</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f8f9fa;
+            min-height: 100vh;
+        }
+
+        .container {
+            min-height: 100vh;
+        }
+
+        .header {
+            display: flex;
+            justify-content: center;
+            padding: 20px 0;
+        }
+
+        .logo {
+            width: 200px;
+            height: auto;
+        }
+
+        .main-content {
+            display: flex;
+            gap: 0;
+            padding: 0 24px;
+            max-width: 1280px;
+            margin: 0 auto;
+        }
+
+        .left-section {
+            width: 50%;
+            padding: 32px;
+            background-color: white;
+            text-align: left;
+        }
+
+        .section-title {
+            font-size: 28px;
+            color: #1d8eb6;
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+
+        .main-title {
+            font-size: 48px;
+            font-weight: bold;
+            color: #1c398e;
+            margin-bottom: 32px;
+            line-height: 1.1;
+        }
+
+        .quote-marks {
+            width: 100px;
+            margin: 40px 0 24px 16px;
+        }
+
+        .quote-text {
+            color: #1c398e;
+            font-size: 24px;
+            margin-bottom: 24px;
+            font-weight: 500;
+            font-style: italic;
+            margin-left: 64px;
+            margin-right: 64px;
+        }
+
+        .quote-author {
+            color: #1c398e;
+            font-weight: 600;
+            font-size: 20px;
+            margin-left: 96px;
+            margin-bottom: 48px;
+        }
+
+        .bottom-logo {
+            margin-top: 80px;
+            padding-top: 80px;
+        }
+
+        .bottom-logo img {
+            height: 60px;
+            width: auto;
+        }
+
+        .right-section {
+            width: 50%;
+            padding: 32px;
+            background-color: white;
+        }
+
+        .activities-header {
+            text-align: right;
+            margin-right: 80px;
+            margin-bottom: 32px;
+        }
+
+        .activities-title {
+            font-size: 28px;
+            color: #0092b8;
+            font-weight: bold;
+            margin-bottom: 8px;
+        }
+
+        .date-range {
+            font-size: 24px;
+            color: #1C398E;
+            font-weight: 600;
+        }
+
+        .calendar-table {
+            width: 100%;
+            border-collapse: separate;
+            border-spacing: 0 12px;
+        }
+
+        .calendar-row {
+            background: linear-gradient(to right, #EAF5F9, #F0F9FF);
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            border-radius: 12px;
+            transition: all 0.3s ease;
+        }
+
+        .calendar-row:hover {
+            box-shadow: 0 10px 15px rgba(0, 0, 0, 0.15);
+            transform: scale(1.01);
+        }
+
+        .date-cell {
+            padding: 20px;
+            font-weight: bold;
+            color: #1c398e;
+            vertical-align: top;
+            width: 25%;
+            border-radius: 12px 0 0 12px;
+        }
+
+        .date-number {
+            font-size: 24px;
+            font-weight: 800;
+        }
+
+        .date-suffix {
+            font-size: 14px;
+            color: #1d8eb6;
+            vertical-align: super;
+        }
+
+        .day-name {
+            text-transform: uppercase;
+            font-size: 12px;
+            color: #6b7280;
+            font-weight: 600;
+        }
+
+        .events-cell {
+            padding: 20px;
+            border-radius: 0 12px 12px 0;
+        }
+
+        .events-list {
+            list-style: none;
+            padding-left: 16px;
+            border-left: 4px solid #1d8eb6;
+        }
+
+        .events-list li {
+            margin-bottom: 8px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            transition: color 0.2s ease;
+        }
+
+        .events-list li:hover {
+            color: #1c398e;
+        }
+
+        .copyright {
+            text-align: center;
+            font-weight: bold;
+            padding: 20px 0;
+            color: #374151;
+        }
+
+        @media (max-width: 1024px) {
+            .main-content {
+                flex-direction: column;
+            }
+
+            .left-section, .right-section {
+                width: 100%;
+            }
+
+            .section-title {
+                font-size: 24px;
+            }
+
+            .main-title {
+                font-size: 40px;
+            }
+
+            .quote-text {
+                font-size: 20px;
+                margin-left: 32px;
+                margin-right: 32px;
+            }
+
+            .quote-author {
+                margin-left: 48px;
+            }
+
+            .activities-header {
+                margin-right: 0;
+                text-align: center;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .main-content {
+                padding: 0 16px;
+            }
+
+            .section-title {
+                font-size: 20px;
+            }
+
+            .main-title {
+                font-size: 32px;
+            }
+
+            .quote-text {
+                font-size: 18px;
+                margin-left: 16px;
+                margin-right: 16px;
+            }
+
+            .quote-author {
+                margin-left: 24px;
+                font-size: 18px;
+            }
+
+            .activities-title {
+                font-size: 24px;
+            }
+
+            .date-range {
+                font-size: 20px;
+            }
+
+            .date-cell, .events-cell {
+                padding: 16px;
+            }
+
+            .date-number {
+                font-size: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <img src="https://abdul-wahabawan.github.io/55-13-2025-Final/assets/newLogo.png" alt="Our Echo Logo" class="logo">
+        </div>
+        
+        <div class="main-content">
+            <div class="left-section">
+                <div class="section-title">WHAT'S ON THIS WEEK?</div>
+                <div class="main-title">WEEKLY<br>SPOTLIGHT</div>
+
+                <div>
+                    <img src="https://www.seekpng.com/png/full/73-739376_quotation-marks-blue-quotation-marks-png.png" alt="Quote marks" class="quote-marks">
+                </div>
+
+                <p class="quote-text">
+                    Embrace challenges as opportunities for growth, for diamonds are created
+                    under pressure. Let adversity shape you into a masterpiece.
+                </p>
+
+                <div class="quote-author">
+                    Penelope Wycliffe
+                </div>
+
+                <div class="bottom-logo">
+                    <img src="https://abdul-wahabawan.github.io/55-13-2025-Final/assets/newLogo.png" alt="Our Echo Logo">
+                </div>
+            </div>
+
+            <div class="right-section">
+                <div class="activities-header">
+                    <div class="activities-title">Activities Magazine</div>
+                    <div class="date-range">23rd June – 29th June</div>
+                </div>
+                
+                <table class="calendar-table">
+                    <tbody>
+                        <!-- Monday -->
+                        <tr class="calendar-row">
+                            <td class="date-cell">
+                                <div class="date-number">23<span class="date-suffix">RD</span></div>
+                                <div class="day-name">Monday</div>
+                            </td>
+                            <td class="events-cell">
+                                <ul class="events-list">
+                                    <li>🗓️ Antarctic Treaty</li>
+                                    <li>🗓️ 1848 - Saxophone</li>
+                                    <li>🗓️ 1940 - Adam Faith</li>
+                                </ul>
+                            </td>
+                        </tr>
+                        
+                        <!-- Tuesday -->
+                        <tr class="calendar-row">
+                            <td class="date-cell">
+                                <div class="date-number">24<span class="date-suffix">TH</span></div>
+                                <div class="day-name">Tuesday</div>
+                            </td>
+                            <td class="events-cell">
+                                <ul class="events-list">
+                                    <li>🗓️ Midsummer's Day</li>
+                                    <li>🗓️ 1717 - First Lodge</li>
+                                    <li>🗓️ 1964 - Louis Armstrong</li>
+                                </ul>
+                            </td>
+                        </tr>
+                        
+                        <!-- Wednesday -->
+                        <tr class="calendar-row">
+                            <td class="date-cell">
+                                <div class="date-number">25<span class="date-suffix">TH</span></div>
+                                <div class="day-name">Wednesday</div>
+                            </td>
+                            <td class="events-cell">
+                                <ul class="events-list">
+                                    <li>🗓️ 1891 - Sherlock Published</li>
+                                    <li>🗓️ 1956 - Marilyn Marries</li>
+                                    <li>🗓️ 1972 - "Don't cry for me"</li>
+                                </ul>
+                            </td>
+                        </tr>
+                        
+                        <!-- Thursday -->
+                        <tr class="calendar-row">
+                            <td class="date-cell">
+                                <div class="date-number">26<span class="date-suffix">TH</span></div>
+                                <div class="day-name">Thursday</div>
+                            </td>
+                            <td class="events-cell">
+                                <ul class="events-list">
+                                    <li>🗓️ 1959 - The Queen visits Canada</li>
+                                    <li>🗓️ 1951 - Lavender Hill Mob</li>
+                                    <li>🗓️ 1870 - Valkyrie</li>
+                                </ul>
+                            </td>
+                        </tr>
+                        
+                        <!-- Friday -->
+                        <tr class="calendar-row">
+                            <td class="date-cell">
+                                <div class="date-number">27<span class="date-suffix">TH</span></div>
+                                <div class="day-name">Friday</div>
+                            </td>
+                            <td class="events-cell">
+                                <ul class="events-list">
+                                    <li>🗓️ Sunglasses Day</li>
+                                    <li>🗓️ 1957 - Smoking warning</li>
+                                    <li>🗓️ 1963 - Brenda Lee</li>
+                                </ul>
+                            </td>
+                        </tr>
+                        
+                        <!-- Saturday -->
+                        <tr class="calendar-row">
+                            <td class="date-cell">
+                                <div class="date-number">28<span class="date-suffix">TH</span></div>
+                                <div class="day-name">Saturday</div>
+                            </td>
+                            <td class="events-cell">
+                                <ul class="events-list">
+                                    <li>🗓️ 1971 - First Scrabble Competition</li>
+                                    <li>🗓️ 1935 - First Rupert Bear Annual</li>
+                                    <li>🗓️ 1962 - Come Guided</li>
+                                </ul>
+                            </td>
+                        </tr>
+                        
+                        <!-- Sunday -->
+                        <tr class="calendar-row">
+                            <td class="date-cell">
+                                <div class="date-number">29<span class="date-suffix">TH</span></div>
+                                <div class="day-name">Sunday</div>
+                            </td>
+                            <td class="events-cell">
+                                <ul class="events-list">
+                                    <li>🗓️ 1966 - Barclaycard</li>
+                                    <li>🗓️ 1910 - Frank Loesser</li>
+                                    <li>🗓️ 1959 - Buddy Holly</li>
+                                </ul>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        
+        <div class="copyright">
+            Copyright @2025 Our Echo Ltd
+        </div>
+    </div>
+</body>
+</html>
